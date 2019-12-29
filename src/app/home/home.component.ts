@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,16 @@ export class HomeComponent implements OnInit {
   goalText: string='My first life goal';
   goals=[];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router, private dataservice:DataService) {
+    this.goals=this.dataservice.getGoal();
+   }
 
   ngOnInit() {
   }
   addItem(){
-    this.goals.push(this.goalText);
+    this.dataservice.goals.push(this.goalText);
     this.goalText='';
-    this.itemCount=this.goals.length;
+    this.itemCount=this.dataservice.goals.length;
   }
 
 }

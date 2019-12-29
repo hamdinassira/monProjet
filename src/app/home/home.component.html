@@ -15,9 +15,9 @@
             <input type="submit" class="btn" (click)="addItem()" value="{{btnTexte}}">
         </form>
     </div>
-    <div class="col">
-        <p class="life-container" *ngFor="let goal of goals">
-            {{goal}}
+    <div *ngFor="let goal of goals">
+        <p>
+            {{g}}
             </p>
     </div>
 </div>
